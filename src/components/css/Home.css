@@ -1,0 +1,40 @@
+/* Home.css */
+.homepage-container {
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    height: 100vh; /* Set a minimum height for centering */
+  }
+  
+  .homepage-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    /* position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%); */
+  }
+  
+  .homepage-description {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #666;
+  }
+  
+  .homepage-button button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .homepage-button button:hover {
+    background-color: #0056b3;
+  }
+  
