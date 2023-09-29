@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './css/Signup.css';
 
@@ -9,6 +9,7 @@ const Signup = () => {
     mobile: '',
     password: '',
     confirmPassword: '',
+    signup: true, // If true only the data will upload
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -16,11 +17,23 @@ const Signup = () => {
   const [registrationError, setRegistrationError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    // Clear the message after 3 seconds
+    const timer = setTimeout(() => {
+      setMessage('');
+      setRegistrationError('');
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer); // Clear the timer if the component unmounts
+    };
+  }, [message, registrationError]);
+
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-  
+
     // Validate mobile number input to allow only numbers and ensure it has exactly 10 digits
     if (name === 'mobile') {
       const numericValue = value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
@@ -39,7 +52,7 @@ const Signup = () => {
       }
       return;
     }
-  
+
     setFormData({
       ...formData,
       [name]: value,
@@ -50,9 +63,8 @@ const Signup = () => {
     // Toggle the password visibility state
     setShowPassword(!showPassword);
   };
-    
 
-  async function handleSubmit(e) {
+  async function handleSignup(e) {
     e.preventDefault();
 
     // Password and confirmPassword validation
@@ -61,9 +73,15 @@ const Signup = () => {
       return;
     }
 
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(formData.password)) {
+      setMessage('Password must contain at least 8 characters, including letters and numbers.');
+    return;
+  }
+    
     try {
-      const response = await fetch('http://localhost:8000/signup.php', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8000/authentication.php', {
+        method: 'POST', // Ensure that you are using POST method
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -74,7 +92,10 @@ const Signup = () => {
         const data = await response.json();
         if (data.status === 'success') {
           setMessage('Signup successful. You can now log in.');
-          navigate('/login'); // Use navigate to redirect to the login page
+          setFormData(initialFormData);
+          setTimeout(() => {
+            navigate('/login'); // Use navigate to redirect to the login page
+          }, 2000);
         } else if (data.status === 'error') {
           if (data.message === 'Both email and mobile number are already registered.') {
             setRegistrationError('Both email and mobile number are already registered.');
@@ -96,7 +117,7 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
+      <form className="signup-form" onSubmit={handleSignup}>
         <h2 className="signup-title">Sign Up</h2>
         <p>Fill out the following information to create your account:</p>
         <div>
@@ -137,7 +158,6 @@ const Signup = () => {
             required
             autoComplete="tel"
           />
-          {/* {registrationError && <p className="signup-message">{registrationError}</p>} */}
         </div>
         <div>
           <label htmlFor="password">Password:</label>
@@ -174,10 +194,14 @@ const Signup = () => {
           />
           <label htmlFor="showPasswordCheckbox">Show Password</label>
         </div>
-        {message && <p className="signup-message">{message}</p>}
+        {message && (
+          <p className={`signup-message ${message.startsWith('Signup successful.') ? 'signup-success' : ''}`}>
+            {message}
+          </p>
+        )}
         {registrationError && <p className="signup-message">{registrationError}</p>}
         <div className="signup-button">
-          <button type="submit">Sign Up</button>
+          <button type="submit">Sign Up </button>
           <Link to="/">
             <button>Cancel</button>
           </Link>

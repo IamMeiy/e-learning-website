@@ -47,6 +47,12 @@
   .signup-message {
     color: red;
   }
+
+  .signup-success {
+    color: green;
+    font-weight: bold;
+  }
+  
   .signup-button button{
     background-color: #007bff;
     color: white;
