@@ -1,0 +1,94 @@
+/* Dashboard.css */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  transition: margin-left 0.3s;
+}
+
+.toggle-navbar-button {
+  position: fixed;
+  left: 20px; /* Adjust this value to your desired position */
+  top: 20px; /* Adjust this value to your desired position */
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dashboard-nav {
+  flex: 0 0 10%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+  height: 100%;
+  box-sizing: border-box;
+  width: 200px;
+  overflow: hidden;
+  transition: width 0.3s;
+}
+
+.dashboard-nav .close-nav {
+  cursor: pointer;
+  margin-top: 10px; /* Adjust this value to your desired position */
+}
+
+.dashboard-container.nav-hidden {
+  margin-left: -11%;
+}
+
+.dashboard-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-nav li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-nav li svg {
+  margin-right: 10px;
+}
+
+.dashboard-content {
+  flex: 2;
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.dashboard-content.content-expanded {
+  margin-left: 60px;
+}
+
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    margin-left: 0;
+  }
+
+  .dashboard-nav {
+    width: 60px;
+  }
+
+  .dashboard-container.nav-hidden .dashboard-nav {
+    width: 0;
+  }
+
+  .dashboard-content {
+    margin-left: 60px;
+  }
+
+  .dashboard-container.nav-hidden .dashboard-content {
+    margin-left: 0;
+  }
+}

@@ -10,6 +10,7 @@ const Login = () => {
     login: true,
   });
   const [message, setMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     // Clear the message after 3 seconds
@@ -22,6 +23,11 @@ const Login = () => {
     };
   }, [message]);
 
+  const handleTogglePassword = () => {
+    // Toggle the password visibility state
+    setShowPassword(!showPassword);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -32,7 +38,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:8000/authentication.php', {
         method: 'POST',
@@ -41,13 +47,14 @@ const Login = () => {
         },
         body: new URLSearchParams(formData).toString(),
       });
-
+  
       if (response.ok) {
         const data = await response.json();
         if (data.status === 'success') {
+          // Save user information in local storage to stay logged in
+          localStorage.setItem('user', JSON.stringify({ id: data.user_id, email: formData.email, name: data.user_name}));
           setMessage('Login successful.');
-          // Redirect to the dashboard or another page
-          navigate(`/dashboard/${formData.email}`);
+          navigate('/dashboard');
         } else {
           setMessage(data.message);
         }
@@ -68,23 +75,35 @@ const Login = () => {
           <label htmlFor='email'>Email:</label>
           <input
             type='email'
+            id='email'
             name='email'
             placeholder='Enter your email'
             value={formData.email}
             onChange={handleInputChange}
             required
+            autoComplete='new-email'
           />
         </div>
         <div>
-          <label htmlFor='password'>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
-            type='password'
-            name='password'
-            placeholder='Enter your password'
+            type={showPassword ? 'text' : 'password'}
+            id="password"
+            name="password"
+            placeholder="Enter your password"
             value={formData.password}
             onChange={handleInputChange}
             required
           />
+        </div>
+        <div className="show-password-checkbox">
+          <input
+            type="checkbox"
+            checked={showPassword}
+            onChange={handleTogglePassword}
+            id="showPasswordCheckbox"
+          />
+          <label htmlFor="showPasswordCheckbox">Show Password</label>
         </div>
         <div className='login-button'>
           <button type='submit'>Login</button>

@@ -101,7 +101,7 @@ function handleLogin($conn, $formData) {
     }
 
     // Check if the user exists
-    $sqlCheckUser = "SELECT id, password FROM users WHERE email = ?";
+    $sqlCheckUser = "SELECT id,password FROM users WHERE email = ?";
     $stmtCheckUser = $conn->prepare($sqlCheckUser);
     $stmtCheckUser->bind_param("s", $email);
     $stmtCheckUser->execute();
@@ -126,7 +126,8 @@ function handleLogin($conn, $formData) {
         $stmtGetUserName->bind_result($userName);
         $stmtGetUserName->fetch();
 
-        echo json_encode(["status" => "success", "message" => "Login successful.", "user_id" => $userId]);
+        echo json_encode(["status" => "success", "message" => "Login successful.", "user_id" => $userId, "user_name" => $userName]);
+        
         
     } else {
         echo json_encode(["status" => "error", "message" => "Invalid password. Please try again."]);
