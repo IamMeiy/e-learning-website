@@ -1,0 +1,59 @@
+.centered-container {
+    text-align: left;
+  }
+  
+  .welcome-message {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .greeting {
+    font-size: 20px;
+    color: #555;
+  }
+  
+  .current-time {
+    font-size: 16px;
+    color: #888;
+  }
+  
+  .not-authenticated-message {
+    font-size: 20px;
+    color: #555;
+  }
+  
+.quote-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .quote-text {
+    font-size: 24px;
+  }
+  
+  .quote-author {
+    margin-top: 10px;
+    font-size: 18px;
+    font-style: italic;
+    color: #888;
+  }
+  
+  .next-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .next-button:hover {
+    background-color: #0056b3;
+  }
+  

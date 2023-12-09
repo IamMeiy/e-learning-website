@@ -1,0 +1,127 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.dashboard-container {
+  background-color: var(--right-side-bg-color);
+  display: flex;
+  height: 100vh;
+}
+
+.toggle-navbar-button {
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 20px;
+  position: fixed;
+  left: 20px; /* Adjust the spacing from the left */
+  top: 20px;
+  z-index: 1000;
+}
+
+.dashboard-content {
+  flex: 2;
+  background-color: var(--right-side-bg-color);
+  color: var(--font-color);
+  padding-left: 90px;
+  padding-top: 20px;
+  height: 100%;
+  box-sizing: border-box;
+  margin-left: 130px; /* Adjust the margin when the navbar is visible */
+  transition: margin-left 0.3s; /* Add transition for smoother animation */
+}
+
+.dashboard-container.nav-hidden .dashboard-content {
+  margin-left: 20px; /* Adjust the margin when the navbar is hidden */
+}
+
+.dashboard-nav {
+  flex: 0 0 200px;
+  background-color: var(--left-side-bg-color);
+  color: var(--font-color);
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  height: 100%;
+  transition: transform 0.3s; /* Add transition for smoother animation */
+  z-index: 999; /* Set higher z-index to be above toggle button */
+  left: 0; /* Adjust to align with the toggle menu */
+  top: 0;
+}
+
+.dashboard-container.nav-hidden .dashboard-nav {
+  transform: translateX(-250px); /* Move it out of the viewport when hidden */
+}
+
+.dashboard-nav ul {
+  list-style: none;
+  padding: 60px 20px 0 20px;
+  margin: 0;
+}
+
+.dashboard-nav li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.dashboard-nav li svg {
+  margin-right: 10px;
+}
+
+.dashboard-nav li:hover{
+  transform: scale(1.3);
+}
+
+.d-login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.d-login-container p {
+  font-size: 30px;
+}
+
+.d-login-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.d-login-button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container.nav-hidden .dashboard-nav {
+    transform: translateX(-200px); /* Move it out of the viewport when hidden */
+  }
+
+  .dashboard-container.nav-hidden .dashboard-content {
+    margin-left: 0;
+  }
+}
+
+/* Light Mode and Dark Mode switch icon */
+.mode-switch {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--light-dark); /* Icon color */
+}

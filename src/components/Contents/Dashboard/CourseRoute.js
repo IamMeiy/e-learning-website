@@ -1,9 +1,8 @@
 import React,{useState, useEffect} from 'react';
 import { Route, Routes } from 'react-router-dom';
-import '../css/CoursesContent.css';
-import C from './Course/C';
-import Java from './Course/Java';
-import Python from './Course/Python';
+import C from '../Course/C';
+import Java from '../Course/Java';
+import Python from '../Course/Python';
 
 const CourseRoute = () => {
     const [user, setUser] = useState(null);
@@ -19,7 +18,7 @@ const CourseRoute = () => {
         <div>
         {user ? (
             <Routes>
-                <Route path="c" element={<C />} />
+                <Route path="c/*" element={<C />} />
                 <Route path="java" element={<Java />} />
                 <Route path="python" element={<Python />} />
             </Routes>
