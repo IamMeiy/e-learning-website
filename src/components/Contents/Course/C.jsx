@@ -42,8 +42,6 @@ const C = () => {
   };
 
   const goToNextSection = () => {
-    // Define your logic to determine the next section
-    // For example, you can maintain an array of section names and navigate to the next one
     const sectionNames = [
       'overview',
       'introduction',

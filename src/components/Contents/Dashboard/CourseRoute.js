@@ -19,8 +19,8 @@ const CourseRoute = () => {
         {user ? (
             <Routes>
                 <Route path="c/*" element={<C />} />
-                <Route path="java" element={<Java />} />
-                <Route path="python" element={<Python />} />
+                <Route path="java/*" element={<Java />} />
+                <Route path="python/*" element={<Python />} />
             </Routes>
         ) : (
           <p>You are not authenticated. Please log in.</p>
