@@ -1,0 +1,116 @@
+/* Light mode styles */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: var(--body-bg-color);
+    color: var(--font-color);
+  }
+  
+  .left-side {
+    width: 200px;
+    background-color: var(--left-side-bg-color); /* Light background color */
+    padding: 20px;
+    flex-shrink: 0;
+    height: 100%;
+    position: fixed;
+    overflow-x: auto;
+  }
+  
+  .left-side::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar on the left side */
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 50px;
+    margin: 0; /* Reset margin */
+    width: 100%; /* Set width to 100% */
+  }
+  
+  .navbar li {
+    margin-bottom: 10px;
+    padding: 10px;
+    transition: background-color 0.3s; /* Add transition for a smooth effect */
+  }
+  
+  .navbar li:hover {
+    background-color: var(--left-side-hover-color); /* Hover background color */
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: var(--left-side-font-color);
+    display: block;
+    padding: 10px;
+  }
+  
+  .navbar li.active {
+    background-color: var(--theme-color); /* Active link background color */
+  }
+  
+  .right-side {
+    background-color: var(--right-side-bg-color);
+    color: var(--font-color);
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    margin-left: 240px;
+  }
+  
+  .bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Push the buttons to the bottom */
+    padding: 10px;
+  }
+  
+  .prev-button,
+  .next-button {
+    font-size: 16px;;
+    background-color: var(--theme-color);
+    color: var(--button-font-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 15px; /* Add padding for a consistent shape */
+    margin: 0; /* Remove default margin */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .prev-button:hover,
+  .next-button:hover {
+    background-color: var(--button-hover);
+  }
+  
+  /* Content and code styles */
+  .section {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .heading {
+    font-size: 24px;
+    color: var(--theme-color); /* Set the heading color */
+    margin-bottom: 10px;
+  }
+  
+  .paragraph {
+    font-size: 18px;
+    color: var(--font-color); /* Set the paragraph text color */
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Light Mode and Dark Mode switch icon */
+  .mode-switch {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--light-dark); /* Icon color */
+  }
+  
