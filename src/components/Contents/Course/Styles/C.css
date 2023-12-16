@@ -1,12 +1,12 @@
 /* Light mode styles */
-.container {
+.C-container {
   display: flex;
   height: 100vh;
   background-color: var(--body-bg-color);
   color: var(--font-color);
 }
 
-.left-side {
+.C-left-side {
   width: 200px;
   background-color: var(--left-side-bg-color); /* Light background color */
   padding: 20px;
@@ -16,11 +16,11 @@
   overflow-x: auto;
 }
 
-.left-side::-webkit-scrollbar {
+.C-left-side::-webkit-scrollbar {
   display: none; /* Hide the scrollbar on the left side */
 }
 
-.navbar ul {
+.C-navbar ul {
   list-style-type: none;
   padding: 0;
   padding-bottom: 50px;
@@ -28,28 +28,28 @@
   width: 100%; /* Set width to 100% */
 }
 
-.navbar li {
+.C-navbar li {
   margin-bottom: 10px;
   padding: 10px;
   transition: background-color 0.3s; /* Add transition for a smooth effect */
 }
 
-.navbar li:hover {
+.C-navbar li:hover {
   background-color: var(--left-side-hover-color); /* Hover background color */
 }
 
-.navbar a {
+.C-navbar a {
   text-decoration: none;
   color: var(--left-side-font-color);
   display: block;
   padding: 10px;
 }
 
-.navbar li.active {
+.C-navbar li.active {
   background-color: var(--theme-color); /* Active link background color */
 }
 
-.right-side {
+.C-right-side {
   background-color: var(--right-side-bg-color);
   color: var(--font-color);
   flex-grow: 1;
@@ -58,7 +58,7 @@
   margin-left: 240px;
 }
 
-.bottom-buttons {
+.C-bottom-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: auto; /* Push the buttons to the bottom */
@@ -86,6 +86,11 @@
 }
 
 /* Content and code styles */
+
+.Title {
+  color: var(--theme-color);
+}
+
 .section {
   margin-bottom: 20px;
   margin-top: 20px;
@@ -104,10 +109,125 @@
   margin-bottom: 20px;
 }
 
+.doubt-button {
+  position: fixed;
+  top: 10px;
+  right: 100px;
+  font-size: 16px;;
+  background-color: var(--theme-color);
+  color: var(--button-font-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 15px; /* Add padding for a consistent shape */
+  margin: 0; /* Remove default margin */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.doubt-button button:hover{
+  background-color: var(--button-hover);
+}
+
+/* Styles for the doubt form container */
+.doubt-form-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--font-color);
+}
+
+/* Styles for the doubt form */
+.doubt-form {
+  background: #fff; /* White background for the form */
+  padding: 40px;
+  width: 15%;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--theme-color); /* Light shadow for the form */
+  background-color: var(--body-bg-color);
+}
+
+.doubt-form h2 {
+  margin-bottom: 20px;
+}
+
+.doubt-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.doubt-form input,
+.doubt-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid var(--theme-color);
+  border-radius: 4px;
+}
+
+.doubt-form .form-group {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}
+
+.doubt-form .form-group label {
+  margin-right: 5px; /* Adjust as needed for spacing between label and checkbox */
+}
+
+.doubt-form .form-group input {
+  width: auto; /* Allow the checkbox to take its natural width */
+}
+
+.doubt-submit-message {
+  /* Common styles for both success and error messages */
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.doubt-submit-message.success {
+  /* Styles for success messages */
+  background-color: green;
+  color: white;
+}
+
+.doubt-submit-message.error {
+  /* Styles for error messages */
+  background-color: red;
+  color: white;
+}
+
+
+.doubt-form-buttons button {
+  background-color: var(--theme-color); /* Blue color for the buttons */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.doubt-form-buttons button:last-child {
+  margin-right: 0;
+}
+
+.doubt-form-buttons button:hover{
+  background-color: var(--button-hover);
+}
+
 /* Light Mode and Dark Mode switch icon */
 .mode-switch {
   position: fixed;
-  top: 10px;
+  top: 15px;
   right: 20px;
   font-size: 24px;
   cursor: pointer;

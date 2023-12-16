@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faInfoCircle, faEnvelope, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { FaSun, FaMoon } from 'react-icons/fa';
@@ -11,12 +11,11 @@ import ContactContent from './Contents/Dashboard/ContactContent';
 import './Contents/css/Dashboard.css';
 
 const Dashboard = () => {
-  const { content } = useParams();
-  const [selectedNavItem, setSelectedNavItem] = useState(content || 'home');
   const [user, setUser] = useState(null);
   const [navBarHidden, setNavBarHidden] = useState(true);
-  const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -25,23 +24,13 @@ const Dashboard = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Scroll to the top whenever the route changes
+    window.scrollTo({top: 0,  behavior: 'smooth'});
+  }, [location.pathname]);
+
   const toggleNavBar = () => {
     setNavBarHidden(!navBarHidden);
-  };
-
-  const renderContent = () => {
-    switch (selectedNavItem) {
-      case 'home':
-        return <HomeContent />;
-      case 'courses':
-        return <CoursesContent />;
-      case 'about':
-        return <AboutContent />;
-      case 'contact':
-        return <ContactContent />;
-      default:
-        return <HomeContent />;
-    }
   };
 
   const handleLogout = () => {
@@ -64,16 +53,16 @@ const Dashboard = () => {
           </button>
           <nav className={`dashboard-nav ${navBarHidden ? 'hidden' : ''}`}>
             <ul>
-              <li onClick={() => setSelectedNavItem('home')}>
+              <li onClick={() => navigate('/dashboard')}>
                 <FontAwesomeIcon icon={faHome} /> Home
               </li>
-              <li onClick={() => setSelectedNavItem('courses')}>
+              <li onClick={() => navigate('/dashboard/courses')}>
                 <FontAwesomeIcon icon={faBook} /> Courses
               </li>
-              <li onClick={() => setSelectedNavItem('about')}>
+              <li onClick={() => navigate('/dashboard/about')}>
                 <FontAwesomeIcon icon={faInfoCircle} /> About
               </li>
-              <li onClick={() => setSelectedNavItem('contact')}>
+              <li onClick={() => navigate('/dashboard/contact')}>
                 <FontAwesomeIcon icon={faEnvelope} /> Contact
               </li>
               <li onClick={handleLogout}>
@@ -81,9 +70,17 @@ const Dashboard = () => {
               </li>
             </ul>
           </nav>
-          <div className="dashboard-content">{renderContent()}</div>
+          <div className="dashboard-content">
+            <Routes>
+              <Route path="home" element={<HomeContent />} />
+              <Route path="courses" element={<CoursesContent />} />
+              <Route path="about" element={<AboutContent />} />
+              <Route path="contact" element={<ContactContent />} />
+              <Route index element={<HomeContent />} />
+            </Routes>
+          </div>
           <div className="mode-switch" onClick={toggleTheme}>
-          {theme === 'dark' ? <FaSun /> : <FaMoon />}
+            {theme === 'dark' ? <FaSun /> : <FaMoon />}
           </div>
         </div>
       ) : (

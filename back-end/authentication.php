@@ -12,11 +12,13 @@ header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if the request is for signup or login
+    // Check if the request is for signup, login, or doubt submission
     if (isset($_POST['signup'])) {
         handleSignup($conn, $_POST);
     } elseif (isset($_POST['login'])) {
         handleLogin($conn, $_POST);
+    } elseif (isset($_POST['submitDoubt'])) {
+        handleDoubtSubmission($conn, $_POST);
     } else {
         echo json_encode(["status" => "error", "message" => "Invalid request data."]);
     }
@@ -135,4 +137,49 @@ function handleLogin($conn, $formData) {
 
     $stmtCheckUser->close();
 }
+
+function handleDoubtSubmission($conn, $formData) {
+    $id = filter_var($formData['id'], FILTER_SANITIZE_NUMBER_INT);
+    $email = filter_var($formData['email'], FILTER_SANITIZE_EMAIL);
+    $course = filter_var($formData['courseName'], FILTER_SANITIZE_STRING);
+    $topic = filter_var($formData['topic'], FILTER_SANITIZE_STRING);
+    $description = filter_var($formData['description'], FILTER_SANITIZE_STRING);
+    $password = filter_var($formData['password'], FILTER_SANITIZE_STRING);
+
+    $sqlCheckUser = "SELECT id, password FROM users WHERE email = ?";
+    $stmtCheckUser = $conn->prepare($sqlCheckUser);
+    $stmtCheckUser->bind_param("s", $email);
+    $stmtCheckUser->execute();
+    $stmtCheckUser->store_result();
+
+    if ($stmtCheckUser->num_rows === 0) {
+        echo json_encode(["status" => "error", "message" => "User not found. Please check your email or sign up."]);
+        exit;
+    }
+
+    $stmtCheckUser->bind_result($userId, $hashedPassword);
+    $stmtCheckUser->fetch();
+
+    if (password_verify($password, $hashedPassword)) {
+
+        $sqlInsertDoubt = "INSERT INTO Doubts (user_id, user_email, course_name, topic, description, status) VALUES (?, ?, ?, ?, ?, 'Pending')";
+
+
+        $stmtInsertDoubt = $conn->prepare($sqlInsertDoubt);
+        $stmtInsertDoubt->bind_param("issss", $id, $email, $course, $topic, $description);
+
+        if ($stmtInsertDoubt->execute()) {
+            echo json_encode(["status" => "success", "message" => "Doubt submitted successfully"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Error occurred while submitting the doubt: " . $stmtInsertDoubt->error]);
+        }
+
+        $stmtInsertDoubt->close();
+    } else {
+        echo json_encode(["status" => "error", "message" => "Invalid password. Please try again."]);
+    }
+
+    $stmtCheckUser->close();
+}
+
 ?>

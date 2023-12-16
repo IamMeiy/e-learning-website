@@ -22,7 +22,7 @@
 
 .course-box:hover {
   transform: scale(1.1); /* Scale the box to 110% on hover */
-  background-color: aqua;
+  background-color: var(--theme-color);
 }
 
 .course-box span {

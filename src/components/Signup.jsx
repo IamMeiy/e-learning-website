@@ -169,7 +169,7 @@ const Signup = () => {
             value={formData.password}
             onChange={handleInputChange}
             required
-            autoComplete="new-password"
+            autoComplete="off"
           />
         </div>
         <div>
@@ -182,7 +182,7 @@ const Signup = () => {
             value={formData.confirmPassword}
             onChange={handleInputChange}
             required
-            autoComplete="new-password"
+            autoComplete="off"
           />
         </div>
         <div className="show-password-checkbox">

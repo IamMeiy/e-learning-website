@@ -93,6 +93,7 @@ const Login = () => {
             placeholder="Enter your password"
             value={formData.password}
             onChange={handleInputChange}
+            autoComplete="off"
             required
           />
         </div>

@@ -48,11 +48,7 @@ const Python = () => {
     const currentIndex = sections.indexOf(selectedSection);
     const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
     const prevSection = sections[prevIndex];
-    if (rightSideRef.current) {
-      rightSideRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
     navigate(`/courses/python/${prevSection}`);
-    
   };
 
   const PythonSection = ({ section }) => {
@@ -60,9 +56,6 @@ const Python = () => {
       // Handle initial section based on URL or default to 'overview'
       const path = window.location.pathname.split('/python/')[1];
       setSelectedSection(path || 'overview');
-    }, [section]);
-
-    useEffect(() => {
       if (rightSideRef.current) {
         rightSideRef.current.scrollTo({ top: 0, behavior: 'smooth' });
       }
@@ -101,9 +94,9 @@ const Python = () => {
   };
 
   return (
-    <div className="container">
-      <div className="left-side">
-        <nav className="navbar">
+    <div className="Python-container">
+      <div className="Python-left-side">
+        <nav className="Python-navbar">
           <ul>
             <li>
               <Link to="/dashboard">Home</Link>
@@ -118,7 +111,7 @@ const Python = () => {
           </ul>
         </nav>
       </div>
-      <div className="right-side" ref={rightSideRef}>
+      <div className="Python-right-side" ref={rightSideRef}>
         <Routes>
           {sections.map(section => (
             <Route
@@ -132,7 +125,7 @@ const Python = () => {
           selectedSection === section && <PythonSection key={section} section={section} />
         ))}
 
-        <div className="bottom-buttons">
+        <div className="Python-bottom-buttons">
           <button onClick={goToPrevSection} className={`prev-button`}>
             Prev
           </button>

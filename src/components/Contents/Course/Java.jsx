@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { useTheme } from '../../../context/ThemeContext';
@@ -36,6 +36,7 @@ const Java = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState('introduction');
+  const rightSideRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
 
 
@@ -97,6 +98,9 @@ const Java = () => {
       // Handle initial section based on URL or default to 'introduction'
       const path = window.location.pathname.split('/java/')[1];
       setSelectedSection(path || 'introduction');
+      if (rightSideRef.current) {
+        rightSideRef.current.scrollTo({ top: 0,  behavior: 'smooth'});
+      }
     }, [section]);
     switch (section) {
       case 'introduction':
@@ -162,9 +166,9 @@ const Java = () => {
   };
   
   return (
-    <div className="container">
-      <div className="left-side">
-        <nav className="navbar">
+    <div className="Java-container">
+      <div className="Java-left-side">
+        <nav className="Java-navbar">
           <ul>
             <li>
               <Link to="/dashboard">Home</Link>
@@ -179,7 +183,7 @@ const Java = () => {
           </ul>
         </nav>
       </div>
-      <div className="right-side">
+      <div className="Java-right-side" ref={rightSideRef}>
       <Routes>
           {sections.map((section) => (
             <Route
@@ -193,7 +197,7 @@ const Java = () => {
           selectedSection === section && <JavaSection key={section} section={section} />
         ))}
 
-        <div className="bottom-buttons">
+        <div className="Java-bottom-buttons">
           <button onClick={goToPrevSection} className="prev-button">
             Prev
           </button>

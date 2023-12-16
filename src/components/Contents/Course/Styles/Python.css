@@ -1,12 +1,12 @@
 /* Light mode styles */
-.container {
+.Python-container {
     display: flex;
     height: 100vh;
     background-color: var(--body-bg-color);
     color: var(--font-color);
   }
   
-  .left-side {
+  .Python-left-side {
     width: 200px;
     background-color: var(--left-side-bg-color); /* Light background color */
     padding: 20px;
@@ -16,11 +16,11 @@
     overflow-x: auto;
   }
   
-  .left-side::-webkit-scrollbar {
+  .Python-left-side::-webkit-scrollbar {
     display: none; /* Hide the scrollbar on the left side */
   }
   
-  .navbar ul {
+  .Python-navbar ul {
     list-style-type: none;
     padding: 0;
     padding-bottom: 50px;
@@ -28,28 +28,28 @@
     width: 100%; /* Set width to 100% */
   }
   
-  .navbar li {
+  .Python-navbar li {
     margin-bottom: 10px;
     padding: 10px;
     transition: background-color 0.3s; /* Add transition for a smooth effect */
   }
   
-  .navbar li:hover {
+  .Python-navbar li:hover {
     background-color: var(--left-side-hover-color); /* Hover background color */
   }
   
-  .navbar a {
+  .Python-navbar a {
     text-decoration: none;
     color: var(--left-side-font-color);
     display: block;
     padding: 10px;
   }
   
-  .navbar li.active {
+  .Python-navbar li.active {
     background-color: var(--theme-color); /* Active link background color */
   }
   
-  .right-side {
+  .Python-right-side {
     background-color: var(--right-side-bg-color);
     color: var(--font-color);
     flex-grow: 1;
@@ -58,7 +58,7 @@
     margin-left: 240px;
   }
   
-  .bottom-buttons {
+  .Python-bottom-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: auto; /* Push the buttons to the bottom */
@@ -107,7 +107,7 @@
   /* Light Mode and Dark Mode switch icon */
   .mode-switch {
     position: fixed;
-    top: 10px;
+    top: 15px;
     right: 20px;
     font-size: 24px;
     cursor: pointer;
