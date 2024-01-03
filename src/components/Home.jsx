@@ -26,6 +26,9 @@ const Home = () => {
         <Link to="/signup">
           <button>Signup</button>
         </Link>
+        <Link to="/admin-login">
+          <button className='admin-button'>Admin</button>
+        </Link>
       </div>
     </div>
   );
