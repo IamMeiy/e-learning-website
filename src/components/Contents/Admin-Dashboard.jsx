@@ -28,18 +28,19 @@ const AdminDashboard = () => {
   const [doubtList, setDoubtList] = useState([]);
   const [activeTab, setActiveTab] = useState('userDetails');
   const [updateMessage, setUpdateMessage] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
+  const [currentFilterStatus, setCurrentFilterStatus] = useState('All');
   const [filteredDoubtList, setFilteredDoubtList] = useState([]);
   const navigate = useNavigate();
 
-  const refreshData = () => {
-    fetchUserDetails();
-    fetchDoubtList();
+  const refreshData = async () => {
+    await fetchUserDetails();
+    await fetchDoubtList();
+    applyFilter(currentFilterStatus);
   };
 
   useInterval(() => {
     refreshData();
-  }, 10000);
+  }, 1000);
 
   useEffect(() => {
     const checkAdminSession = async () => {
@@ -192,10 +193,10 @@ const AdminDashboard = () => {
   
 
   const applyFilter = () => {
-    if (filterStatus === 'All') {
+    if (currentFilterStatus === 'All') {
       setFilteredDoubtList(doubtList);
     } else {
-      const filtered = doubtList.filter((doubt) => doubt.status === filterStatus);
+      const filtered = doubtList.filter((doubt) => doubt.status === currentFilterStatus);
       setFilteredDoubtList(filtered);
     }
   };
@@ -244,13 +245,15 @@ const AdminDashboard = () => {
           <h2>Doubt List</h2>
           <div className="filter-section">
             <label>Filter by Status:</label>
-            <select onChange={(e) => setFilterStatus(e.target.value)}>
+            <select
+              value={currentFilterStatus}
+              onChange={(e) => setCurrentFilterStatus(e.target.value)}
+            >
               <option value="All">All</option>
               <option value="Pending">Pending</option>
               <option value="Resolved">Resolved</option>
               <option value="Closed">Closed</option>
             </select>
-            <button className="filter-button" onClick={() => applyFilter()}>Filter</button>
           </div>
           <table>
             <thead>
