@@ -88,17 +88,7 @@ th {
   margin-top: 20px;
 }
 
-button {
-  background-color: #e44d26;
-  color: white;
-  padding: 15px 25px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-button:hover {
+.admin-tabs :hover {
   background-color: #d33a1a;
 }
 

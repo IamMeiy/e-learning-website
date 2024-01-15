@@ -9,16 +9,20 @@
     --left-side-font-color: #333;
     --left-side-hover-color: #cccccc;
     --right-side-bg-color: white;
+    --border-color: orange;
+
 }
 .dark-mode {
     --theme-color:#007bff;
     --font-color: white;
-    --body-bg-color: #282c34;
+    --body-bg-color: rgb(13, 23, 33);
     --button-font-color: white;
     --button-hover:#0056b3;
     --light-dark: #F3E7BE;
     --left-side-bg-color: #282c34;
     --left-side-font-color: white;
     --left-side-hover-color: #38444d;
-    --right-side-bg-color: #333;
+    --right-side-bg-color: rgb(13, 23, 33);
+    --border-bg-color: rgb(21, 38, 56);
+    --border-color: green;
 }

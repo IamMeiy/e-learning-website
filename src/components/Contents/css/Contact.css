@@ -1,0 +1,52 @@
+/* Contact.css */
+
+.contact-container {
+    margin: 10rem;
+    padding: 40px;
+    text-align: center;
+    background-color: var(--border-bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--border-color);
+    color: var(--font-color);
+  }
+  
+  .contact-container h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-container p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .contact-info p {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-info a {
+    color: var(--theme-color);
+    text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  
+  .developer-info p {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .developer-info ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .developer-info li {
+    margin-bottom: 10px;
+  }
+  

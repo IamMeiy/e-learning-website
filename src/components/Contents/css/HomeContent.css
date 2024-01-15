@@ -1,59 +1,111 @@
 .centered-container {
-    text-align: left;
-  }
-  
-  .welcome-message {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .greeting {
-    font-size: 20px;
-    color: #555;
-  }
-  
-  .current-time {
-    font-size: 16px;
-    color: #888;
-  }
-  
-  .not-authenticated-message {
-    font-size: 20px;
-    color: #555;
-  }
-  
+  text-align: left;
+  padding: 20px;
+}
+
+.welcome-message {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var(--theme-color);
+}
+
+.greeting {
+  font-size: 24px;
+  color: var(--font-color);
+}
+
+.not-authenticated-message {
+  font-size: 24px;
+  color: var(--font-color);
+}
+
 .quote-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    margin-top: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.quote-text {
+  font-size: 24px;
+  color: var(--font-color);
+}
+
+.quote-author {
+  margin-top: 10px;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--left-side-font-color);
+}
+
+/* Responsive styles for small screens (up to 480px) */
+@media (max-width: 480px) {
+  .welcome-message {
+    font-size: 26px;
   }
-  
+
+  .greeting,
+  .not-authenticated-message,
+  .quote-text {
+    font-size: 18px;
+  }
+
+  .quote-author {
+    font-size: 14px;
+  }
+}
+
+/* Responsive styles for medium screens (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .welcome-message {
+    font-size: 28px;
+  }
+
+  .greeting,
+  .not-authenticated-message,
+  .quote-text {
+    font-size: 20px;
+  }
+
+  .quote-author {
+    font-size: 16px;
+  }
+}
+
+/* Responsive styles for large screens (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .welcome-message {
+    font-size: 30px;
+  }
+
+  .greeting,
+  .not-authenticated-message,
+  .quote-text {
+    font-size: 22px;
+  }
+
+  .quote-author {
+    font-size: 18px;
+  }
+}
+
+/* Responsive styles for extra-large screens (1025px and above) */
+@media (min-width: 1025px) {
+  .welcome-message {
+    font-size: 32px;
+  }
+
+  .greeting,
+  .not-authenticated-message,
   .quote-text {
     font-size: 24px;
   }
-  
+
   .quote-author {
-    margin-top: 10px;
-    font-size: 18px;
-    font-style: italic;
-    color: #888;
+    font-size: 20px;
   }
-  
-  .next-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .next-button:hover {
-    background-color: #0056b3;
-  }
-  
+}

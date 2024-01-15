@@ -2,16 +2,19 @@ html,
 body {
   height: 100%;
   margin: 0;
+
 }
 
 .dashboard-container {
   background-color: var(--right-side-bg-color);
   display: flex;
   height: 100vh;
+  overflow-y: auto;
 }
 
 .toggle-navbar-button {
   background-color: transparent;
+  color: var(--font-color);
   border: none;
   font-size: 24px;
   cursor: pointer;
@@ -108,7 +111,7 @@ body {
 
 @media (max-width: 768px) {
   .dashboard-container.nav-hidden .dashboard-nav {
-    transform: translateX(-200px); /* Move it out of the viewport when hidden */
+    transform: translateX(-220px); /* Move it out of the viewport when hidden */
   }
 
   .dashboard-container.nav-hidden .dashboard-content {

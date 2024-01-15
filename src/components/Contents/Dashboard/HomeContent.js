@@ -51,10 +51,6 @@ const HomeContent = () => {
     return `${randomAdjective} ${randomNoun}`;
   };
 
-  const getNextQuote = () => {
-    setCurrentQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
-    setRandomAuthor(generateRandomAuthor());
-  };
 
   return (
     <div className="centered-container">
@@ -69,9 +65,6 @@ const HomeContent = () => {
                   <strong>{quotes[currentQuoteIndex].text}</strong>
                 </p>
                 <p className="quote-author">- {randomAuthor}</p>
-                <button className="next-button" onClick={getNextQuote}>
-                  Next Quote
-                </button>
               </div>
             )}
           </div>
