@@ -14,7 +14,7 @@ const AdminLogin = () => {
   useEffect(() => {
     const checkAdminSession = async () => {
       try {
-        const response = await fetch('http://localhost:8000/check-admin-session.php', {
+        const response = await fetch('http://luffify.infinityfreeapp.com/check-admin-session.php', {
           method: 'POST',
           credentials: 'include',
         });
@@ -48,7 +48,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:8000/admin-authentication.php', {
+      const response = await fetch('http://luffify.infinityfreeapp.com/admin-authentication.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

@@ -45,7 +45,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const checkAdminSession = async () => {
       try {
-        const response = await fetch('http://localhost:8000/check-admin-session.php', {
+        const response = await fetch('http://luffify.infinityfreeapp.com/check-admin-session.php', {
           method: 'POST',
           credentials: 'include',
         });
@@ -81,7 +81,7 @@ const AdminDashboard = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:8000/admin-logout.php', {
+      const response = await fetch('http://luffify.infinityfreeapp.com/admin-logout.php', {
         method: 'POST',
         credentials: 'include',
       });
@@ -106,7 +106,7 @@ const AdminDashboard = () => {
 
   const handleStatusChange = async (doubtId, newStatus) => {
     try {
-      const response = await fetch('http://localhost:8000/update-doubt-status.php', {
+      const response = await fetch('http://luffify.infinityfreeapp.com/update-doubt-status.php', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const response = await fetch('http://localhost:8000/get-user-details.php', {
+      const response = await fetch('http://luffify.infinityfreeapp.com/get-user-details.php', {
         method: 'GET',
         credentials: 'include',
         mode: 'cors',
@@ -172,7 +172,7 @@ const AdminDashboard = () => {
 
   const fetchDoubtList = async () => {
     try {
-      const response = await fetch('http://localhost:8000/get-doubt-list.php', {
+      const response = await fetch('http://luffify.infinityfreeapp.com/get-doubt-list.php', {
         method: 'GET',
         credentials: 'include',
         mode: 'cors',

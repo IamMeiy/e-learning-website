@@ -40,7 +40,7 @@ const Login = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:8000/authentication.php', {
+      const response = await fetch('http://luffify.infinityfreeapp.com/authentication.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
