@@ -88,10 +88,7 @@ th {
   margin-top: 20px;
 }
 
-<<<<<<< HEAD
 .admin-tabs :hover {
-=======
-button {
   background-color: #e44d26;
   color: white;
   padding: 15px 25px;
@@ -102,7 +99,6 @@ button {
 }
 
 button:hover {
->>>>>>> upstream/main
   background-color: #d33a1a;
 }
 
