@@ -255,6 +255,11 @@ const AdminDashboard = () => {
               <option value="Closed">Closed</option>
             </select>
           </div>
+          {updateMessage && (
+              <div className="update-message">
+                {updateMessage}
+              </div>
+            )}
           <table>
             <thead>
               <tr>
@@ -293,12 +298,6 @@ const AdminDashboard = () => {
               ))}
             </tbody>
           </table>
-        </div>
-      )}
-
-      {updateMessage && (
-        <div className="update-message">
-          {updateMessage}
         </div>
       )}
     </div>
