@@ -80,13 +80,13 @@ const Signup = () => {
   }
     
     try {
-      const response = await fetch('http://luffify.infinityfreeapp.com/authentication.php', {
-        method: 'POST', // Ensure that you are using POST method
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData).toString(),
-      });
+      const response = await fetch('//http://192.168.1.14:8000/authentication.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(formData).toString(),
+    });
 
       if (response.ok) {
         const data = await response.json();

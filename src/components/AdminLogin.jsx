@@ -54,7 +54,6 @@ const AdminLogin = () => {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams(formData).toString(),
-        credentials: 'include',  // Include credentials for cross-origin requests
       });
 
       if (response.ok) {
